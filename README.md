@@ -6,6 +6,17 @@ Simple wrapper for the upstream official [roundcubemail](https://hub.docker.com/
 
 This just ensures that the dokku database environment variables are converted to the expected upstream environment variables.
 
+i.e. `DATABASE_URL` is extracted to
+
+    ROUNDCUBEMAIL_DB_TYPE
+    ROUNDCUBEMAIL_DB_HOST
+    ROUNDCUBEMAIL_DB_USER
+    ROUNDCUBEMAIL_DB_PASSWORD
+    ROUNDCUBEMAIL_DB_NAME
+    ROUNDCUBEMAIL_DSNW
+
+And this all because you can not just set `ROUNDCUBEMAIL_DSNW`
+
 ## NOTES
 
 ### SQLite
