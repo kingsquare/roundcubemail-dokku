@@ -15,7 +15,7 @@ i.e. `DATABASE_URL` is extracted to
     ROUNDCUBEMAIL_DB_NAME
     ROUNDCUBEMAIL_DSNW
 
-And this all because you can not just set `ROUNDCUBEMAIL_DSNW`
+And this all because you can not just set `ROUNDCUBEMAIL_DSNW` and let the upstream app figure it out.
 
 ## NOTES
 
