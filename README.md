@@ -1,12 +1,12 @@
-[![Docker Pulls](https://img.shields.io/docker/pulls/kingsquare/roundcube-dokku.svg)](https://hub.docker.com/r/kingsquare/roundcube-dokku/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/kingsquare/roundcubemail-dokku.svg)](https://hub.docker.com/r/kingsquare/roundcubemail-dokku/)
 
-# Roundcube for dokku
+# Roundcubemail for dokku
 
 Simple dokku configuration wrapper for the upstream official [roundcubemail](https://hub.docker.com/r/roundcube/roundcubemail) image.
 
 This just ensures that the dokku linked container variables are converted to the expected upstream environment variables.
 
-## Configuration
+## Environment configuration
 
 All `ROUNDCUBEMAIL_<var>` env vars are set to `$config[strtolower('<var>')]`. 
 
