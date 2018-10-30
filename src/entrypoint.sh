@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-`php /dokku/env.php`
+cp /dokku/config.php /var/roundcube/config/00-dokku.php
 
 /docker-entrypoint.sh $@
