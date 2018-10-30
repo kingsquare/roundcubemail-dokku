@@ -27,8 +27,8 @@ If the value can be json decoded to an (assoc) array then this will used as the 
 i.e.
 
 ````shell
-ROUNDCUBE_ARRAY_VAR="[1,2,3]"
-ROUNDCUBE_ASSOC_VAR="{\"key\":\"value\"}"
+ROUNDCUBEMAIL_ARRAY_VAR="[1,2,3]"
+ROUNDCUBEMAIL_ASSOC_VAR="{\"key\":\"value\"}"
 ````
 
 will be 
