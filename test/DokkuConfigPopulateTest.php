@@ -44,6 +44,16 @@ class DokkuConfigPopulateTest extends \PHPUnit\Framework\TestCase
           'test' => true,
         ],
       ],
+      'can use ROUNDCUBEMAIL_<key> vars with json value' => [
+        [
+          'ROUNDCUBEMAIL_test_array' => '["one", "two"]',
+          'ROUNDCUBEMAIL_test_object' => '{"one": "two"}',
+        ],
+        [
+          'test_array' => ['one', 'two'],
+          'test_object' => ['one' => 'two'],
+        ],
+      ],
     ];
   }
 

@@ -38,7 +38,13 @@ class DokkuConfig {
     foreach (array_filter($env, function ($value, $key) {
       return strpos($key, 'ROUNDCUBEMAIL_') === 0;
     }, ARRAY_FILTER_USE_BOTH) as $key => $value) {
-        $config[strtolower(str_replace('ROUNDCUBEMAIL_', '', $key))] = $value;
+      $key = strtolower(str_replace('ROUNDCUBEMAIL_', '', $key));
+      $config[$key] = $value;
+      $json = json_decode($value, JSON_OBJECT_AS_ARRAY);
+      if (!json_last_error() && is_array($json)) {
+         // todo possibly let all vars be json decoded? though may break upstream expectancy
+        $config[$key] = $json;
+      }
     }
     return $config;
   }
