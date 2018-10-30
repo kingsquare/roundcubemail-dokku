@@ -2,24 +2,48 @@
 
 # Roundcube for dokku
 
-Simple wrapper for the upstream official [roundcubemail](https://hub.docker.com/r/roundcube/roundcubemail) image.
+Simple dokku configuration wrapper for the upstream official [roundcubemail](https://hub.docker.com/r/roundcube/roundcubemail) image.
 
-This just ensures that the dokku database environment variables are converted to the expected upstream environment variables.
+This just ensures that the dokku linked container variables are converted to the expected upstream environment variables.
 
-i.e. `DATABASE_URL` is extracted to
+## Configuration
 
-    ROUNDCUBEMAIL_DB_TYPE
-    ROUNDCUBEMAIL_DB_HOST
-    ROUNDCUBEMAIL_DB_USER
-    ROUNDCUBEMAIL_DB_PASSWORD
-    ROUNDCUBEMAIL_DB_NAME
-    ROUNDCUBEMAIL_DSNW
+All `ROUNDCUBEMAIL_<var>` env vars are set to `$config['<var>']`
 
-And this all because you can not just set `ROUNDCUBEMAIL_DSNW` and let the upstream app figure it out.
+### Link database container (optional)
 
-## NOTES
+Requires [mysql plugin](https://github.com/dokku/dokku-mysql) / [mariadb plugin](https://github.com/dokku/dokku-mariadb)
 
-### SQLite
+Note: if using mariadb replace mysql with mariadb in commands
+
+    dokku mysql:create <name>
+    dokku mysql:link <name> <app>
+
+`DATABASE_URL` is used for configuration value `db_dsnw`
+
+### Link memcached container (optional)
+
+Requires [memcached plugin](https://github.com/dokku/dokku-memcached)
+
+    dokku memcached:create <name>
+    dokku memcached:link <name> <app>
+
+`MEMCACHED_URL` is used for `memcache_hosts` configuration.
+
+### Link redis container (optional)
+
+Requires [redis plugin](https://github.com/dokku/dokku-redis)
+
+    dokku redis:create <name>
+    dokku redis:link <name> <app>
+
+`REDIS_URL` is used for `redis_hosts` configuration.
+
+### Mount for temp storage (optional)
+
+    dokku storage:mount <app> <host-dir>:/tmp/roundcube-temp
+
+### Mount for SQLite DB (optional)
 
 If using the built in SQLite and you want to persist the database then add a mount to `/var/www/html/db`.
 

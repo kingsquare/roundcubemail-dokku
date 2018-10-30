@@ -1,0 +1,23 @@
+{
+    "name": "kingsquare/roundcube-dokku",
+    "description": "Roundcube for dokku",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kingsquare BV",
+            "email": "source@kingsquare.nl"
+        }
+    ],
+    "require": {
+      "php": "^7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4"
+    },
+    "autoload": {
+      "classmap": [
+        "src"
+      ]
+    }
+}
