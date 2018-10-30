@@ -8,8 +8,35 @@ This just ensures that the dokku linked container variables are converted to the
 
 ## Configuration
 
-All `ROUNDCUBEMAIL_<var>` env vars are set to `$config['<var>']`.
+All `ROUNDCUBEMAIL_<var>` env vars are set to `$config[strtolower('<var>')]`. 
+
+i.e.
+
+````shell
+ROUNDCUBEMAIL_TEST=1
+````
+
+will be 
+
+````php
+$config['test'] => '1';
+````
+
 If the value can be json decoded to an (assoc) array then this will used as the value.
+
+i.e.
+
+````shell
+ROUNDCUBE_ARRAY_VAR="[1,2,3]"
+ROUNDCUBE_ASSOC_VAR="{\"key\":\"value\"}"
+````
+
+will be 
+
+````php
+$config['array_var'] = [1,2,3];
+$config['assoc_var'] = ['key' => 'value'];
+````
 
 ### Link database container (optional)
 
