@@ -1,5 +1,5 @@
 <?php
 
-require_once __DIR__ . '/DokkuConfig.class.php';
+require_once '/dokku/DokkuConfig.class.php';
 
 $config = DokkuConfig::populate($config, $_ENV);
